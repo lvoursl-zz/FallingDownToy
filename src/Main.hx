@@ -16,6 +16,7 @@ class Main extends Sprite
 	var inited:Bool;
 	var game:Game;
 	var screen:Screen;
+	var frame:Int = 0;
 	public static var keys:Map<Int,Bool> = new Map();
 	/* ENTRY POINT */
 	
@@ -29,15 +30,14 @@ class Main extends Sprite
 	{
 		if (inited) return;
 		inited = true;
-
 		
 		screen = new Screen("helloscreen");
 		addChild(screen);
-		screen.addEventListener(MouseEvent.CLICK, createNewGame);
+			
 		
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, onDown);
 		stage.addEventListener(KeyboardEvent.KEY_UP, onUp);
-		
+		//screen.addEventListener("start", start);	
 		// (your code here)
 		
 		// Stage:
@@ -46,9 +46,16 @@ class Main extends Sprite
 		// Assets:
 		// nme.Assets.getBitmapData("img/assetname.jpg");
 	}
-	
+		
 	public function onDown(e:KeyboardEvent) {
 		keys[e.keyCode] = true;
+		if ((screen != null) && (keys[32])) {
+			screen.parent.removeChild(screen);
+			screen = null;
+			game = new Game();
+			game.addEventListener("gameover", gameover);
+			addChild(game);
+		}	
 	}
 	
 	public function onUp(e:KeyboardEvent) {
@@ -56,26 +63,16 @@ class Main extends Sprite
 	}
 	
 	public function gameover(e:Event) {
-		removeChild(game);
-		screen = new Screen("gameover");
-		screen.addEventListener(MouseEvent.CLICK, createNewGame);
-		addChild(screen);
+		if (game != null) {
+			game.removeEventListener("gameover", gameover);
+			game.parent.removeChild(game);
+			game = null;
+
+			screen = new Screen("gameover");
+			addChild(screen); 
+		}
 	}
 	
-	public function wingame(e:Event) {
-		removeChild(game);
-		screen = new Screen("wingame");
-		screen.addEventListener(MouseEvent.CLICK, createNewGame);
-		addChild(screen);
-	}
-	
-	public function createNewGame(e:MouseEvent) {
-		removeChild(screen);
-		game = new Game();
-		addChild(game);
-		game.addEventListener("wingame", wingame);
-		game.addEventListener("gameover", gameover);
-	}
 
 	/* SETUP */
 

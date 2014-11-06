@@ -18,7 +18,7 @@ class Game extends Sprite
 	var arrayOfWalls:Array<Wall> = [];
 	
 	var random:Int;
-	var speed:Int = 2;
+	var speed:Int = 3;
 	var frame:Int = 0;
 	var scoreTable:TextField;
 	
@@ -31,6 +31,7 @@ class Game extends Sprite
 		
 		addEventListener(Event.ENTER_FRAME, onFrame);
 	}
+	
 	
 	public function createHero() {
 		hero = new Hero(360, 20);
@@ -68,7 +69,7 @@ class Game extends Sprite
 	public function createScoreTable() {
 		scoreTable = new TextField();
 		scoreTable.text = "Score :" + frame;
-		scoreTable.x = 20;
+		scoreTable.x = 180;
 		scoreTable.y = 20;
 		addChild(scoreTable);
 	}
@@ -78,7 +79,7 @@ class Game extends Sprite
 		scoreTable.text = "Score :" + frame;
 		
 		if ((frame % 50) == 0) createObstruction();
-		if ((frame % 1000) == 0) speed++;
+		if ((frame % 500) == 0) speed++;
 		
 		moveHero();
 		moveWall();
@@ -98,13 +99,17 @@ class Game extends Sprite
 			hero.x = 178;
 		}
 		hero.bmp.x = hero.x;
+		for (oneObstruction in arrayOfObstruction) {
+			if (hero.bmp.hitTestObject(oneObstruction.bmp)) { dispatchEvent(new Event("gameover")); }
+		}
+
 	}
 	
 	public function moveWall() {
 		for (oneWall in arrayOfWalls) {
 			oneWall.y -= speed;
 			oneWall.bmp.y = oneWall.y;
-			if (oneWall.y < -122) {
+			if (oneWall.y < -222) {
 				removeChild(oneWall.bmp);
 				arrayOfWalls.remove(oneWall);
 			} 		

@@ -16,11 +16,11 @@ class Screen extends Sprite
 		screenText = new TextField();
 		screenText.multiline = true;
 		if (type == "gameover") {
-			screenText.htmlText = "You lose :( <br> Click to restart";
+			screenText.htmlText = "Click space to restart";
 		} else if (type == "wingame") {
 			screenText.htmlText = "You win :) <br> Click to restart";
 		} else if (type == "helloscreen") {
-			screenText.htmlText = "Start";
+			screenText.htmlText = "To start click - SPACE";
 		}
 		screenText.autoSize = TextFieldAutoSize.CENTER;
 		screenText.textColor = 0xffffff;

@@ -17,6 +17,8 @@ class Main extends Sprite
 	var game:Game;
 	var screen:Screen;
 	var frame:Int = 0;
+	public static var score:Int = 0;
+	public static var bestScore:Int = 0;
 	public static var keys:Map<Int,Bool> = new Map();
 	/* ENTRY POINT */
 	
@@ -36,8 +38,7 @@ class Main extends Sprite
 			
 		
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, onDown);
-		stage.addEventListener(KeyboardEvent.KEY_UP, onUp);
-		//screen.addEventListener("start", start);	
+		stage.addEventListener(KeyboardEvent.KEY_UP, onUp);	
 		// (your code here)
 		
 		// Stage:

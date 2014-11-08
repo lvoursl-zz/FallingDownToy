@@ -18,17 +18,17 @@ class Game extends Sprite
 	var arrayOfWalls:Array<Wall> = [];
 	
 	var random:Int;
-	var speed:Int = 3;
+	var speed:Int = 4;
 	var frame:Int = 0;
 	var scoreTable:TextField;
 	
 	public function new() 
 	{
 		super();
+		frame = 0;
 		createHero();
 		createWalls();
 		createScoreTable();
-		
 		addEventListener(Event.ENTER_FRAME, onFrame);
 	}
 	
@@ -79,7 +79,7 @@ class Game extends Sprite
 		scoreTable.text = "Score :" + frame;
 		
 		if ((frame % 50) == 0) createObstruction();
-		if ((frame % 500) == 0) speed++;
+		if ((frame % 300) == 0) speed++;
 		
 		moveHero();
 		moveWall();
@@ -100,7 +100,14 @@ class Game extends Sprite
 		}
 		hero.bmp.x = hero.x;
 		for (oneObstruction in arrayOfObstruction) {
-			if (hero.bmp.hitTestObject(oneObstruction.bmp)) { dispatchEvent(new Event("gameover")); }
+			if (hero.bmp.hitTestObject(oneObstruction.bmp)) { 
+				Main.score = frame;
+				frame = 0;
+				if (Main.score > Main.bestScore) {
+					Main.bestScore = Main.score;
+				}
+				dispatchEvent(new Event("gameover")); 
+			}
 		}
 
 	}

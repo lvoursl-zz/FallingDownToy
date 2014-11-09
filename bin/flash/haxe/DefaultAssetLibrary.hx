@@ -43,8 +43,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		#if flash
 		
-		className.set ("img/hero.png", __ASSET__img_hero_png);
-		type.set ("img/hero.png", AssetType.IMAGE);
+		className.set ("img/hero1.png", __ASSET__img_hero1_png);
+		type.set ("img/hero1.png", AssetType.IMAGE);
+		className.set ("img/hero2.png", __ASSET__img_hero2_png);
+		type.set ("img/hero2.png", AssetType.IMAGE);
+		className.set ("img/hero3.png", __ASSET__img_hero3_png);
+		type.set ("img/hero3.png", AssetType.IMAGE);
 		className.set ("img/obstruction.png", __ASSET__img_obstruction_png);
 		type.set ("img/obstruction.png", AssetType.IMAGE);
 		className.set ("img/wall.png", __ASSET__img_wall_png);
@@ -54,7 +58,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#elseif html5
 		
 		var id;
-		id = "img/hero.png";
+		id = "img/hero1.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/hero2.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/hero3.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -74,8 +86,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		/*var useManifest = false;
 		
-		className.set ("img/hero.png", __ASSET__img_hero_png);
-		type.set ("img/hero.png", AssetType.IMAGE);
+		className.set ("img/hero1.png", __ASSET__img_hero1_png);
+		type.set ("img/hero1.png", AssetType.IMAGE);
+		
+		className.set ("img/hero2.png", __ASSET__img_hero2_png);
+		type.set ("img/hero2.png", AssetType.IMAGE);
+		
+		className.set ("img/hero3.png", __ASSET__img_hero3_png);
+		type.set ("img/hero3.png", AssetType.IMAGE);
 		
 		className.set ("img/obstruction.png", __ASSET__img_obstruction_png);
 		type.set ("img/obstruction.png", AssetType.IMAGE);
@@ -654,7 +672,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if !display
 #if flash
 
-@:keep @:bind class __ASSET__img_hero_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind class __ASSET__img_hero1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind class __ASSET__img_hero2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind class __ASSET__img_hero3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind class __ASSET__img_obstruction_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind class __ASSET__img_wall_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 
@@ -666,12 +686,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 #end
 
 #elseif (windows || mac || linux)
 
 
-//@:bitmap("assets/img/hero.png") class __ASSET__img_hero_png extends openfl.display.BitmapData {}
+//@:bitmap("assets/img/hero1.png") class __ASSET__img_hero1_png extends openfl.display.BitmapData {}
+//@:bitmap("assets/img/hero2.png") class __ASSET__img_hero2_png extends openfl.display.BitmapData {}
+//@:bitmap("assets/img/hero3.png") class __ASSET__img_hero3_png extends openfl.display.BitmapData {}
 //@:bitmap("assets/img/obstruction.png") class __ASSET__img_obstruction_png extends openfl.display.BitmapData {}
 //@:bitmap("assets/img/wall.png") class __ASSET__img_wall_png extends openfl.display.BitmapData {}
 //

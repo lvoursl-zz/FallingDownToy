@@ -3,6 +3,7 @@ package ;
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.Lib;
+import openfl.display.Bitmap;
 import openfl.events.KeyboardEvent;
 import openfl.events.MouseEvent;
 
@@ -20,6 +21,7 @@ class Main extends Sprite
 	public static var score:Int = 0;
 	public static var bestScore:Int = 0;
 	public static var keys:Map<Int,Bool> = new Map();
+	public static var heroBmp:Bitmap = new Bitmap();
 	/* ENTRY POINT */
 	
 	function resize(e) 
@@ -56,7 +58,17 @@ class Main extends Sprite
 			game = new Game();
 			game.addEventListener("gameover", gameover);
 			addChild(game);
-		}	
+		} else if ((screen != null) && (screen.type == "helloscreen") && (keys[37])) {
+			// left; shit code ;p
+			if (screen.votedHero == 2) screen.votedHero = 1;
+				else if (screen.votedHero == 3) screen.votedHero = 2;
+			screen.changeHero(screen.votedHero);
+		} else if ((screen != null) && (screen.type == "helloscreen") && (keys[39])) {
+			// right;
+			if (screen.votedHero == 1) screen.votedHero = 2;
+				else if (screen.votedHero == 2) screen.votedHero = 3;
+			screen.changeHero(screen.votedHero);
+		}
 	}
 	
 	public function onUp(e:KeyboardEvent) {

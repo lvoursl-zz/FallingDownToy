@@ -27,7 +27,15 @@ class ApplicationMain {
 		var types = [];
 		
 		
-		urls.push ("img/hero.png");
+		urls.push ("img/hero1.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("img/hero2.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("img/hero3.png");
 		types.push (AssetType.IMAGE);
 		
 		

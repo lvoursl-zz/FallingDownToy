@@ -140,7 +140,7 @@ class Game extends Sprite
 	
 	public function createObstruction() {
 		random = Math.round(Std.random(410) + 160);
-		obstruction = new Obstruction(random, 420);
+		obstruction = new Obstruction(random, 550);
 		arrayOfObstruction.push(obstruction);
 		addChild(obstruction.bmp);
 	}
